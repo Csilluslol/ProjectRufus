@@ -1,8 +1,16 @@
 ﻿using System.Drawing;
+using System.Net;
 
 Menu();
 string playerName = "";
 bool isMiloWithUs = false;
+int playerHealth = 100;
+int playerStrength = 1;
+
+string[] enemyNames = {"Gorlock", "Maru", "Bober", "Pingwin", "Bob", "József", "Ferenc", "Vojtech", "Togepi", "Kirby"}
+
+//(*/ω＼*)
+
 void Menu()
 {
 
@@ -30,29 +38,33 @@ switch (menu_opt)
 void NewGameStart()
 {
     Console.Clear();
-    Console.WriteLine("What's your name dear?");
+    Print("What's your name?");
     Console.WriteLine();
     string playerName = Console.ReadLine();
-    Console.WriteLine(  );
-
-    Console.WriteLine("You woke up in your mother's house.");
-    Console.WriteLine("It was a strangely quiet morning in Berlin.");
-    Console.WriteLine("A few days ago the doctor took your mom to the hospital, you should pay her a visit soon.");
     Console.WriteLine();
-    Console.WriteLine("Doc told us not to go but who is he to tell us what to do");
+
+    Print("You woke up in your mother's house. ");
+    Print("It was a strangely quiet morning in Berlin. ");
+    Print("A few days ago the doctor took your mom to the hospital, you should pay her a visit soon. ");
+    Console.WriteLine();
+    Print("Doc told us not to go but who is he to tell us what to do ");
+    Console.WriteLine();
     Tutorial();
 }
 
 void Tutorial()
 {
-    Console.WriteLine("Get bro to come w u?");
-    Console.WriteLine("(Y/N)");
+    Print("Get bro to come w u?");
+    Print("(Y/N)");
     string choice = Console.ReadLine();
     if (choice.ToUpper() == "Y")
     {
-        Console.WriteLine("Bro not home anyway");
-        Console.WriteLine("Milo (your friend) comes over  and offers you he'll come with you if you help him get mushrooms");
-        Console.WriteLine("Will you help him?");
+        Print("Bro not home anyway ");
+        Console.WriteLine();
+        Console.WriteLine();
+        Print("Milo (your friend) comes over  and offers you he'll come with you if you help him get mushrooms ");
+        Console.WriteLine();
+        Print("Will you help him? ");
         choice = Console.ReadLine();
 
         if (choice.ToUpper() == "Y")
@@ -66,8 +78,8 @@ void Tutorial()
     }
     else
     {
-        Console.WriteLine("Milo (your friend) comes over  and offers you he'll come with you if you help him get mushrooms");
-        Console.WriteLine("Will you help him?");
+        Print("Milo (your friend) comes over  and offers you he'll come with you if you help him get mushrooms");
+        Print("Will you help him?");
         choice = Console.ReadLine();
 
         if (choice.ToUpper() == "Y") {
@@ -84,6 +96,49 @@ void MushroomMiniGame()
 {
 
 }
+
+void Print(string text, int speed=60)
+{
+    foreach (var c in text)
+    {
+        Console.Write(c);
+        Thread.Sleep(speed);
+    }
+}
+
+void Battle(string type)
+{
+    Print("A WILD ENEMY APPEARED");
+    Print("Player turn");
+    Console.WriteLine("[1] - Attack \n [2] - Items \n [3] - Talk \n [4] - Flee");
+
+    string battleChoice = Console.ReadLine();
+    Random rng = new Random();
+
+    int enemyHealth= rng.Next(1-200);
+    int enemyDamage = rng.Next(5-20);
+    string enemyName = enemyNames[rng.Next(10)];
+    
+
+    switch (battleChoice)
+    {
+        case "1":
+
+            break;
+        case "2":
+            break;
+        case "3":
+            break;
+        case "4":
+            Console.WriteLine("BUH-BYE");
+            Print("And you ran away like a coward");
+            break;
+    }
+}
+ 
+
+
+
 
 /*int[] cColors = { 0x000000, 0x000080, 0x008000, 0x008080, 0x800000, 0x800080, 0x808000, 0xC0C0C0, 0x808080, 0x0000FF, 0x00FF00, 0x00FFFF, 0xFF0000, 0xFF00FF, 0xFFFF00, 0xFFFFFF };
 
